@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Markers} from './markers';
 
 declare var AMap;
 
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
   }];
 
   constructor() {
+    console.log(Markers);
   }
 
   ngOnInit() {
@@ -41,9 +43,9 @@ export class AppComponent implements OnInit {
       center: [110.29002, 25.27361]
     });
     this.map.on('complete', () => {
-      for (const item of this.administrativeRegion) {
+      for (const marker of Markers) {
         new AMap.Marker({
-          position: item.center.split(','),
+          position: marker.split(','),
           // offset: new AMap.Pixel(-12, -12),
           map: this.map
         });
